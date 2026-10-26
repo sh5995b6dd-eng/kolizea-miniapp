@@ -3,29 +3,92 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b0f">
+<meta name="theme-color" content="#09090d">
 <title>KOLIZEA GROUP</title>
 <style>
 :root{color-scheme:dark;--bg:#09090d;--panel:#14141b;--pink:#ff286f;--muted:#a5a5b3;--line:#292933}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#24101a 0,transparent 48%),var(--bg);color:#f8f8fb;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-.wrap{max-width:520px;margin:auto;padding:24px 16px 40px}.brand{display:flex;align-items:center;gap:12px;margin:8px 0 30px}.logo{width:48px;height:48px;border:1px solid #ff286f;border-radius:14px;display:grid;place-items:center;color:var(--pink);font-weight:900;font-size:21px;box-shadow:0 0 22px #ff286f30}.brand-name{font-size:18px;font-weight:900;letter-spacing:1.7px}.brand-sub{font-size:11px;color:var(--muted);letter-spacing:2px;margin-top:4px}
+.wrap{max-width:520px;margin:auto;padding:24px 16px 40px}.brand{display:flex;align-items:center;gap:12px;margin:8px 0 30px}.logo{width:48px;height:48px;border:1px solid var(--pink);border-radius:14px;display:grid;place-items:center;color:var(--pink);font-weight:900;font-size:21px;box-shadow:0 0 22px #ff286f30}.brand-name{font-size:18px;font-weight:900;letter-spacing:1.7px}.brand-sub{font-size:11px;color:var(--muted);letter-spacing:2px;margin-top:4px}
 h1{font-size:32px;line-height:1.05;margin:0 0 12px;letter-spacing:-1px}h1 span{color:var(--pink)}.intro{color:var(--muted);font-size:14px;line-height:1.55;margin:0 0 22px}
-.balance{background:linear-gradient(120deg,#24111b,#17141c 70%);border:1px solid #492033;border-radius:20px;padding:20px;margin-bottom:24px}.eyebrow{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}.amount{font-size:34px;font-weight:850;margin:8px 0 4px}.amount small{font-size:16px;color:var(--pink)}.hint{font-size:12px;color:var(--muted)}
+.balance{background:linear-gradient(120deg,#24111b,#17141c 70%);border:1px solid #492033;border-radius:20px;padding:20px;margin-bottom:24px}.eyebrow{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}.amount{font-size:34px;font-weight:850;margin:8px 0 4px}.amount small{font-size:16px;color:var(--pink)}.hint{font-size:12px;color:var(--muted);line-height:1.5}
 .section-head{display:flex;justify-content:space-between;align-items:center;margin:25px 0 13px}.section-head h2{font-size:17px;margin:0}.pill{font-size:11px;border:1px solid var(--line);border-radius:99px;padding:6px 10px;color:var(--muted)}
-.task{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px;margin:10px 0}.task-top{display:flex;align-items:center;gap:10px}.task-icon{width:40px;height:40px;border-radius:12px;background:#24212b;display:grid;place-items:center;font-size:18px}.task-title{font-weight:750;font-size:14px}.task-desc{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.45}.task-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:15px}.reward{font-weight:800;color:var(--pink)}button{border:0;border-radius:10px;background:var(--pink);color:white;font-weight:800;padding:11px 14px;cursor:pointer}button:active{transform:scale(.98)}.note{margin-top:22px;padding:14px;border:1px dashed #37313b;border-radius:14px;color:var(--muted);font-size:12px;line-height:1.5}.status{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff286f;margin-right:6px}.footer{text-align:center;font-size:11px;color:#6f6f7c;margin-top:28px}
+.task{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px;margin:10px 0}.task-top{display:flex;align-items:flex-start;gap:10px}.task-icon{width:40px;height:40px;flex:0 0 40px;border-radius:12px;background:#24212b;display:grid;place-items:center;font-size:18px}.task-title{font-weight:750;font-size:14px}.task-desc{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}.task-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:15px}.reward{font-weight:800;color:var(--pink);font-size:13px}button{border:0;border-radius:10px;background:var(--pink);color:white;font-weight:800;padding:11px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:default}.note{margin-top:22px;padding:14px;border:1px dashed #37313b;border-radius:14px;color:var(--muted);font-size:12px;line-height:1.55}.status{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--pink);margin-right:6px}.footer{text-align:center;font-size:11px;color:#6f6f7c;margin-top:28px}.empty{padding:18px;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted);font-size:13px;line-height:1.5}.error{color:#ff9dbd}.small{font-size:11px;color:var(--muted);margin-top:8px}
 </style>
 </head>
 <body>
 <main class="wrap">
   <header class="brand"><div class="logo">K</div><div><div class="brand-name">KOLIZEA GROUP</div><div class="brand-sub">TASKS · TEAM · RESULTS</div></div></header>
   <h1>ТВОИ ЗАДАЧИ.<br><span>ТВОЙ РЕЗУЛЬТАТ.</span></h1>
-  <p class="intro">Рабочее пространство команды KOLIZEA GROUP. Здесь будут задания, отчёты и информация о выплатах.</p>
-  <section class="balance"><div class="eyebrow">Мой баланс</div><div class="amount">0 <small>₽</small></div><div class="hint"><span class="status"></span>Демо-режим · данные пока не сохраняются</div></section>
-  <div class="section-head"><h2>Доступные задания</h2><span class="pill">ДЕМО</span></div>
-  <article class="task"><div class="task-top"><div class="task-icon">✓</div><div><div class="task-title">Проверка карточки компании</div><div class="task-desc">Проверьте корректность адреса, графика работы и контактных данных по предоставленным материалам.</div></div></div><div class="task-bottom"><span class="reward">Оплата после проверки</span><button onclick="alert('Это демонстрационный экран. Подключение базы данных настроим следующим шагом.')">Открыть</button></div></article>
-  <article class="task"><div class="task-top"><div class="task-icon">▤</div><div><div class="task-title">Подготовка отчёта</div><div class="task-desc">Выполните инструкцию менеджера и отправьте результат на проверку.</div></div></div><div class="task-bottom"><span class="reward">Статус: свободно</span><button onclick="alert('Это демонстрационный экран. Подключение базы данных настроим следующим шагом.')">Открыть</button></div></article>
-  <div class="note"><strong style="color:#f8f8fb">Важно:</strong> это пока только внешний макет. Вход через Telegram, задания, панель менеджера и общий баланс ещё не подключены. Реальные данные и выплаты появятся после настройки защищённого сервера и базы данных.</div>
+  <p class="intro">Рабочее пространство команды KOLIZEA GROUP. Здесь будут отображаться задания из общей базы.</p>
+  <section class="balance"><div class="eyebrow">Мой баланс</div><div class="amount">— <small>₽</small></div><div class="hint">Баланс подключим после настройки безопасного входа пользователя.</div></section>
+  <div class="section-head"><h2>Задания из базы</h2><span class="pill" id="connectionBadge">ПОДКЛЮЧЕНИЕ…</span></div>
+  <div id="taskList"><div class="empty">Подключаемся к Appwrite и загружаем задания…</div></div>
+  <div class="note" id="connectionNote"><strong style="color:#f8f8fb">Статус подключения</strong><div id="connectionText" style="margin-top:6px">Проверяем доступ к базе данных.</div></div>
   <div class="footer">KOLIZEA GROUP © 2026</div>
 </main>
+<script>
+const APPWRITE_ENDPOINT = "https://fra.cloud.appwrite.io/v1";
+const PROJECT_ID = "6adf0ea80022d6debdbb";
+const DATABASE_ID = "tablesdb";
+const TASKS_TABLE_ID = "6adf2c37000e04e4d8a2";
+const taskList = document.getElementById("taskList");
+const connectionBadge = document.getElementById("connectionBadge");
+const connectionText = document.getElementById("connectionText");
+
+function showConnection(state, message) {
+  connectionBadge.textContent = state;
+  connectionText.textContent = message;
+}
+function safeText(value, fallback) {
+  return value === undefined || value === null || String(value).trim() === "" ? fallback : String(value);
+}
+function renderTasks(rows) {
+  const available = rows.filter(row => !["deleted","archived","completed","удалено","архив","завершено"].includes(String(row.status || "").toLowerCase()));
+  if (!available.length) {
+    taskList.innerHTML = '<div class="empty">В базе пока нет доступных заданий. Когда менеджер добавит задачу, она появится здесь.</div>';
+    return;
+  }
+  taskList.replaceChildren();
+  available.forEach((row, index) => {
+    const card = document.createElement("article"); card.className = "task";
+    const top = document.createElement("div"); top.className = "task-top";
+    const icon = document.createElement("div"); icon.className = "task-icon"; icon.textContent = "✓";
+    const info = document.createElement("div");
+    const title = document.createElement("div"); title.className = "task-title"; title.textContent = safeText(row.title, "Задание без названия");
+    const desc = document.createElement("div"); desc.className = "task-desc"; desc.textContent = safeText(row.description, "Описание пока не добавлено.");
+    info.append(title, desc); top.append(icon, info);
+    const bottom = document.createElement("div"); bottom.className = "task-bottom";
+    const reward = document.createElement("span"); reward.className = "reward";
+    reward.textContent = row.reward ? "Оплата: " + row.reward + " ₽" : "Оплата уточняется";
+    const status = document.createElement("span"); status.className = "pill"; status.textContent = safeText(row.status, "Новая");
+    bottom.append(reward, status); card.append(top, bottom); taskList.append(card);
+  });
+}
+async function loadTasks() {
+  try {
+    const url = APPWRITE_ENDPOINT + "/tablesdb/" + encodeURIComponent(DATABASE_ID) + "/tables/" + encodeURIComponent(TASKS_TABLE_ID) + "/rows";
+    const response = await fetch(url, {headers: {"X-Appwrite-Project": PROJECT_ID, "Content-Type": "application/json"}});
+    if (!response.ok) {
+      let detail = "";
+      try { const data = await response.json(); detail = data.message || ""; } catch (_) {}
+      if (response.status === 401 || response.status === 403) {
+        throw new Error("Appwrite отклонил запрос. Нужно добавить адрес сайта в платформы Web и настроить безопасное право чтения строк таблицы «Задачи». Публичную запись включать не нужно.");
+      }
+      if (response.status === 404) throw new Error("Таблица не найдена по указанному ID. Проверь, что ID таблицы «Задачи» не изменился.");
+      throw new Error("Appwrite вернул ошибку " + response.status + (detail ? ": " + detail : "") + ".");
+    }
+    const data = await response.json();
+    renderTasks(Array.isArray(data.rows) ? data.rows : []);
+    showConnection("БАЗА ДОСТУПНА", "Связь с Appwrite работает. Загружено строк: " + (Array.isArray(data.rows) ? data.rows.length : 0) + ". Это только чтение заданий; отправка отчётов и баланс ещё не подключены.");
+  } catch (error) {
+    taskList.innerHTML = '<div class="empty error"></div>';
+    taskList.firstElementChild.textContent = error instanceof TypeError
+      ? "Браузер не смог обратиться к Appwrite. Возможно, адрес сайта ещё не добавлен в платформы Web проекта."
+      : error.message;
+    showConnection("НУЖНА НАСТРОЙКА", error.message);
+  }
+}
+loadTasks();
+</script>
 </body>
 </html>
