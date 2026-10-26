@@ -67,16 +67,30 @@ function renderTasks(rows) {
 }
 async function loadTasks() {
   try {
-    const url = APPWRITE_ENDPOINT + "/tablesdb/" + encodeURIComponent(DATABASE_ID) + "/tables/" + encodeURIComponent(TASKS_TABLE_ID) + "/rows";
-    const response = await fetch(url, {headers: {"X-Appwrite-Project": PROJECT_ID, "Content-Type": "application/json"}});
+    const headers = {"X-Appwrite-Project": PROJECT_ID, "Content-Type": "application/json"};
+    const tablesUrl = APPWRITE_ENDPOINT + "/tablesdb/" + encodeURIComponent(DATABASE_ID) + "/tables";
+    const tablesResponse = await fetch(tablesUrl, {headers});
+    if (!tablesResponse.ok) {
+      let detail = "";
+      try { const errorData = await tablesResponse.json(); detail = errorData.message || ""; } catch (_) {}
+      throw new Error("Не удалось получить список таблиц (" + tablesResponse.status + "). " + detail + " Проверь ID базы данных и доступ сайта в Appwrite.");
+    }
+    const tablesData = await tablesResponse.json();
+    const tables = Array.isArray(tablesData.tables) ? tablesData.tables : [];
+    const taskTable = tables.find(table => table.$id === TASKS_TABLE_ID) || tables.find(table => String(table.name || "").trim().toLowerCase() === "задачи");
+    if (!taskTable) {
+      const names = tables.map(table => (table.name || "Без названия") + " (" + table.$id + ")");
+      throw new Error("База доступна, но таблица «Задачи» не найдена. Таблицы в этой базе: " + (names.length ? names.join(", ") : "нет таблиц") + ". Проверь, что выбрана правильная база Appwrite.");
+    }
+    const url = APPWRITE_ENDPOINT + "/tablesdb/" + encodeURIComponent(DATABASE_ID) + "/tables/" + encodeURIComponent(taskTable.$id) + "/rows";
+    const response = await fetch(url, {headers});
     if (!response.ok) {
       let detail = "";
       try { const data = await response.json(); detail = data.message || ""; } catch (_) {}
       if (response.status === 401 || response.status === 403) {
-        throw new Error("Appwrite отклонил запрос. Нужно добавить адрес сайта в платформы Web и настроить безопасное право чтения строк таблицы «Задачи». Публичную запись включать не нужно.");
+        throw new Error("Appwrite отклонил запрос. Добавь адрес сайта в Platforms → Web и проверь право чтения строк таблицы «Задачи». Публичную запись включать не нужно.");
       }
-      if (response.status === 404) throw new Error("Ошибка Appwrite 404. Запрос: " + url + (detail ? " | Ответ сервера: " + detail : ""));
-      throw new Error("Appwrite вернул ошибку " + response.status + (detail ? ": " + detail : "") + ".");
+      throw new Error("Ошибка Appwrite " + response.status + ". Запрос: " + url + (detail ? " | Ответ сервера: " + detail : ""));
     }
     const data = await response.json();
     renderTasks(Array.isArray(data.rows) ? data.rows : []);
