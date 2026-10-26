@@ -74,7 +74,7 @@ async function loadTasks() {
       if (response.status === 401 || response.status === 403) {
         throw new Error("Appwrite отклонил запрос. Нужно добавить адрес сайта в платформы Web и настроить безопасное право чтения строк таблицы «Задачи». Публичную запись включать не нужно.");
       }
-      if (response.status === 404) throw new Error("Таблица не найдена по указанному ID. Проверь, что ID таблицы «Задачи» не изменился.");
+      if (response.status === 404) throw new Error("Appwrite не нашёл базу или таблицу (404)." + (detail ? " Ответ сервера: " + detail : "") + " Проверь ID базы данных и таблицы в настройках Appwrite.");
       throw new Error("Appwrite вернул ошибку " + response.status + (detail ? ": " + detail : "") + ".");
     }
     const data = await response.json();
